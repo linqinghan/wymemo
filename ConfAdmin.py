@@ -75,8 +75,9 @@ class ConfAdmin():
 def main():
 	ca = ConfAdmin()
 	f = ca.get_user_file()
-	
+	print(f)
 	data = ca.get_data_info("zdy")
+	print(data)
 	data = ca.get_data_info("hb")
 	
 	ca.add_new_user("wangwu", "wangwu.pkl", "pkl")

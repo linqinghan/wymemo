@@ -107,7 +107,7 @@ class UserAdmin():
 def main():
 	us = UserAdmin()
 	ret = us.login("hb", "hb123")
-	# print(ret['msg'])
+	print(ret['msg'])
 	ret = us.register("hb", "hb456")
 	# print(ret['msg'])
 		
