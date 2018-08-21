@@ -17,6 +17,7 @@ file=lisi.pkl
 type=json
 
 '''
+import os
 import configparser
 import LogAdmin
 
@@ -57,13 +58,16 @@ class ConfAdmin():
 	def load(self, conf_file):
 		'''载入配置文件'''
 		self.logger.info("Load File %s", conf_file)
-		try:
+		if not os.path.exists(conf_file):
+			with open(conf_file, "w") as f:
+				f.write("[DEFAULT]\nuser_file=user.pkl\n")
+		try:			
 			self.conf = configparser.ConfigParser()
 			self.conf.read(conf_file)
 			return self.conf
 		except Exception as e:
 			self.logger.error("Load File Failed[%s]", e)
-		
+
 	def save(self, conf_file):
 		'''保存配置文件'''
 		try:

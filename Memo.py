@@ -83,7 +83,7 @@ class Memo():
 	def save_memo_json(self, filename, memo_list):
 		self.logger.info("Save Json File[%s]", filename)
 		try:
-			with open(filename, "r") as f:
+			with open(filename, "w") as f:
 				json.dump(self.memo_list, f)
 		except Exception as e:
 			self.logger.error("Load Pkl File Error[%s]", e)
@@ -120,7 +120,16 @@ class Memo():
 		self.show_memo()
 		self.save_memo(self._filename, self._type, self.memo_list)
 
-
+		
+	def check_memo_id(self, id):
+		''' check_memo_id '''
+		self.logger.info("check_memo_id")
+		for memo in self.memo_list:
+			if memo['id'] == id:
+				return True
+		return False
+		
+		
 	def modify_memo(self, id, time, thing, usetime):
 		''' modify '''
 		self.logger.info("modify_memo")
